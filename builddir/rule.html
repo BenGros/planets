@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; planets 0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <p>This code labels subfields using volumetric coordinates and atlas subfield labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param label_nii<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BIDS path to subfields nifti file, defaults to bids(root=work, datatype=”anat”, suffix=”subfields.nii.gz”, space=”unfold”, hemi=”{hemi}”, label=”hipp”, atlas=”{atlas}”, <a href="#id1"><span class="problematic" id="id2">**</span></a>config[“subj_wildcards”])</p>
+</dd>
+<dt class="field-even">type label_nii<span class="colon">:</span></dt>
+<dd class="field-even"><p>BIDSPath, optional</p>
+</dd>
+<dt class="field-odd">param nii_ap<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BIDS path to AP coordinates nifti file, defaults to bids(root=work, datatype=”coords”, dir=”AP”, label=”hipp”, suffix=”coords.nii.gz”, desc=”laplace”, space=”corobl”, hemi=”{hemi}”, <a href="#id3"><span class="problematic" id="id4">**</span></a>config[“subj_wildcards”])</p>
+</dd>
+<dt class="field-even">type nii_ap<span class="colon">:</span></dt>
+<dd class="field-even"><p>BIDSPath, optional</p>
+</dd>
+<dt class="field-odd">param nii_pd<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BIDS path to PD coordinates nifti file, defaults to bids(root=work, datatype=”coords”, dir=”PD”, label=”hipp”, suffix=”coords.nii.gz”, desc=”laplace”, space=”corobl”, hemi=”{hemi}”, <a href="#id5"><span class="problematic" id="id6">**</span></a>config[“subj_wildcards”])</p>
+</dd>
+<dt class="field-even">type nii_pd<span class="colon">:</span></dt>
+<dd class="field-even"><p>BIDSPath, optional</p>
+</dd>
+<dt class="field-odd">param nii_io<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BIDS path to laminar coordinates nifti file, defaults to get_laminar_coords</p>
+</dd>
+<dt class="field-even">type nii_io<span class="colon">:</span></dt>
+<dd class="field-even"><p>BIDSPath, optional</p>
+</dd>
+<dt class="field-odd">param nii_label<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BIDS path to output labeled nifti file, defaults to bids(root=work, datatype=”anat”, desc=”subfieldsnotissue”, suffix=”dseg.nii.gz”, space=”corobl”, hemi=”{hemi}”, atlas=”{atlas}”, <a href="#id7"><span class="problematic" id="id8">**</span></a>config[“subj_wildcards”])</p>
+</dd>
+<dt class="field-even">type nii_label<span class="colon">:</span></dt>
+<dd class="field-even"><p>BIDSPath, optional</p>
+</dd>
+<dt class="field-odd">raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p>FileNotFoundError</p>
+</dd>
+<dt class="field-even">return<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">rtype<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<p>‘’’
+rule label_subfields_from_vol_coords_corobl:</p>
+<blockquote>
+<div><p>‘’’Label subfields using the volumetric coords and atlas subfield labels’’’
+input:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>label_nii=bids(</dt><dd><p>root=work,
+datatype=”anat”,
+suffix=”subfields.nii.gz”,
+space=”unfold”,
+hemi=”{hemi}”,
+label=”hipp”,
+atlas=”{atlas}”,
+<a href="#id9"><span class="problematic" id="id10">**</span></a>config[“subj_wildcards”]</p>
+</dd>
+</dl>
+<p>),
+nii_ap=bids(</p>
+<blockquote>
+<div><p>root=work,
+datatype=”coords”,
+dir=”AP”,
+label=”hipp”,
+suffix=”coords.nii.gz”,
+desc=”laplace”,
+space=”corobl”,
+hemi=”{hemi}”,
+<a href="#id11"><span class="problematic" id="id12">**</span></a>config[“subj_wildcards”]</p>
+</div></blockquote>
+<p>),
+nii_pd=bids(</p>
+<blockquote>
+<div><p>root=work,
+datatype=”coords”,
+dir=”PD”,
+label=”hipp”,
+suffix=”coords.nii.gz”,
+desc=”laplace”,
+space=”corobl”,
+hemi=”{hemi}”,
+<a href="#id13"><span class="problematic" id="id14">**</span></a>config[“subj_wildcards”]</p>
+</div></blockquote>
+<p>),
+nii_io=get_laminar_coords,</p>
+</div></blockquote>
+<dl>
+<dt>output:</dt><dd><dl class="simple">
+<dt>nii_label=bids(</dt><dd><p>root=work,
+datatype=”anat”,
+desc=”subfieldsnotissue”,
+suffix=”dseg.nii.gz”,
+space=”corobl”,
+hemi=”{hemi}”,
+atlas=”{atlas}”,
+<a href="#id15"><span class="problematic" id="id16">**</span></a>config[“subj_wildcards”]</p>
+</dd>
+</dl>
+<p>),</p>
+</dd>
+<dt>group:</dt><dd><p>“subj”</p>
+</dd>
+<dt>script:</dt><dd><p>“../scripts/label_subfields_from_vol_coords.py”</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>‘’’</p>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">planets</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Ben.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/rule.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
