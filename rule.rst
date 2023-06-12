@@ -14,6 +14,7 @@ This code labels subfields using volumetric coordinates and atlas subfield label
 :return: None
 :rtype: None
 
+..code-block:: snakemake
 rule label_subfields_from_vol_coords_corobl:
     '''Label subfields using the volumetric coords and atlas subfield labels'''
     input:
