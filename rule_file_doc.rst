@@ -1,8 +1,7 @@
 
 label_subfields_from_vol_coords_corobl
-======================================
+--------------------------------------
 """Label subfields using volumetric coords and atlas subfield labels"""
------------------------------------------------------------------------
 .. code-block::
     :caption: first rule
     
