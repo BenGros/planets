@@ -1,0 +1,8 @@
+
+read
+I'm sorry, I cannot complete this task as there is no code provided for "code_2.py".
+
+def read(file):
+  with open(file, 'r') as f:
+    contents = f.read()
+  return contents
