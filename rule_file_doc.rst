@@ -5,6 +5,7 @@ label_subfields_from_vol_coords_corobl
 -----------------------------------------------------------------------
 .. code-block::
     :caption: first rule
+    
         rule label_subfields_from_vol_coords_corobl:
             """ Label subfields using the volumetric coords and atlas subfield labels"""
             input:
@@ -56,9 +57,7 @@ label_subfields_from_vol_coords_corobl
                 "subj"
             script:
                 "../scripts/label_subfields_from_vol_coords.py"
-
-
-
+                
 get_tissue_atlas_remapping
 ```Return a string with remapping commands for each tissue label in the atlas, using the config file to map old to new labels.```
 
